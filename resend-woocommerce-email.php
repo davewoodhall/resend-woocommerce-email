@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Resend WooCommerce Email
  * Description:       Resend a WooCommerce order email to an address of your choice, to validate template changes without notifying the customer.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Author:            ADN Communication
  * License:           GPL-2.0-or-later
  * Requires at least: 6.0
@@ -19,7 +19,7 @@ declare( strict_types=1 );
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'RESENDEMAIL_VERSION', '1.0.0' );
+define( 'RESENDEMAIL_VERSION', '1.0.1' );
 define( 'RESENDEMAIL_FILE', __FILE__ );
 define( 'RESENDEMAIL_PATH', plugin_dir_path( __FILE__ ) );
 define( 'RESENDEMAIL_BASENAME', plugin_basename( __FILE__ ) );

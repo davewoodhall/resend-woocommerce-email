@@ -53,7 +53,7 @@ msgid "Invalid destination address."
 msgstr "Adresse de destination invalide."
 
 #: src/Email/OrderEmailSender.php
-#. translators: %s: order ID or order number
+#. translators: %s: sequential / displayed order number
 msgid "Order “%s” could not be found."
 msgstr "Commande « %s » introuvable."
 
@@ -87,8 +87,8 @@ msgid "Order number"
 msgstr "Numéro de commande"
 
 #: src/Admin/ResendPage.php
-msgid "WordPress ID or displayed order number."
-msgstr "ID WordPress ou numéro affiché de la commande."
+msgid "Sequential WooCommerce order number (e.g. _order_number meta), not the post ID."
+msgstr "Numéro de commande WooCommerce séquentiel (meta _order_number), pas l’ID de publication."
 
 #: src/Admin/ResendPage.php
 msgid "Recipient"

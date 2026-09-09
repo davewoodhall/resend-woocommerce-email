@@ -74,7 +74,7 @@ final class SendCommand {
 	 * ## OPTIONS
 	 *
 	 * <order_ref>
-	 * : Order ID or custom order number.
+	 * : Sequential / displayed order number (`_order_number`), not the post ID.
 	 *
 	 * --to=<email>
 	 * : Destination email address.
@@ -87,8 +87,8 @@ final class SendCommand {
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     wp resendemail send 1024 --to=dev@example.com
-	 *     wp resendemail send 1024 --to=dev@example.com --email=customer_completed_order --no-prefix
+	 *     wp resendemail send 9993 --to=dev@example.com
+	 *     wp resendemail send 9993 --to=dev@example.com --email=customer_completed_order --no-prefix
 	 *
 	 * @since 1.0.0
 	 *

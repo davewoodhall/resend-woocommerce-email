@@ -3,7 +3,7 @@
 WordPress / WooCommerce plugin that **resends an order email** to a test address, so you can validate email template changes **without notifying the customer** or the usual recipients.
 
 **Text domain:** `resendemail`  
-**Version:** 1.0.0  
+**Version:** 1.0.1  
 **Licence:** GPL-2.0-or-later
 
 ---
@@ -20,7 +20,7 @@ Without a dedicated tool, the usual options fall short:
 
 **Resend WooCommerce Email** addresses this by:
 
-1. selecting an existing order (WordPress ID or displayed order number);
+1. selecting an existing order by its **sequential / displayed order number** (`_order_number` meta — never the WordPress/HPOS post ID alone);
 2. choosing a supported WooCommerce email type;
 3. temporarily forcing the recipient to a test address;
 4. running the same send mechanism as WooCommerce (`trigger`);
@@ -58,7 +58,7 @@ Declared compatibility with **HPOS** (High-Performance Order Storage / custom or
 
 1. Go to **WooCommerce → Resend email** (French UI label: *Renvoi de courriel*).
 2. Fill in:
-   - **Order number:** WordPress ID (`123`) or custom displayed number (`_order_number` meta);
+   - **Order number:** sequential WooCommerce number stored as `_order_number` (e.g. `9993`), **not** the post ID (`30657`);
    - **Recipient:** test address (prefilled with the logged-in user’s email);
    - **Email:** email type to resend;
    - **Options:** prefix the subject with `[TEST]` (on by default).
@@ -90,7 +90,7 @@ wp resendemail send <order_ref> --to=<email> [--email=<email_id>] [--no-prefix]
 
 | Argument / option | Description |
 |-------------------|-------------|
-| `<order_ref>` | Order ID or number |
+| `<order_ref>` | Sequential / displayed order number (`_order_number`), not the post ID |
 | `--to=` | Destination address (required in practice) |
 | `--email=` | Email ID (default: `new_order`) |
 | `--no-prefix` | Do not prepend `[TEST]` to the subject |
@@ -98,8 +98,8 @@ wp resendemail send <order_ref> --to=<email> [--email=<email_id>] [--no-prefix]
 Examples:
 
 ```bash
-wp resendemail send 1024 --to=dev@example.com
-wp resendemail send 1024 --to=dev@example.com --email=customer_completed_order
+wp resendemail send 9993 --to=dev@example.com
+wp resendemail send 9993 --to=dev@example.com --email=customer_completed_order
 wp resendemail send CMD-8891 --to=dev@example.com --email=customer_invoice --no-prefix
 ```
 
@@ -109,7 +109,7 @@ wp resendemail send CMD-8891 --to=dev@example.com --email=customer_invoice --no-
 
 When sending, the plugin:
 
-1. **Resolves the order** via `wc_get_order( absint( $ref ) )`, then falls back to a query on the `_order_number` meta.
+1. **Resolves the order** by normalized sequential number (leading `#` stripped): `woocommerce_shortcode_order_tracking_order_id` filter → `_order_number` and related meta keys (both query forms; each hit verified against the meta value on the order) → bounded `get_order_number()` / `_order_number` scan. **Post ID / HPOS ID alone is never used as a lookup key.** Unverified meta hits are never accepted.
 2. **Locates the email object** in `WC()->mailer()->get_emails()` by its `id`.
 3. Temporarily adds (priority `PHP_INT_MAX`):
    - `woocommerce_email_recipient_{$email_id}` → test address;
@@ -178,7 +178,7 @@ Loaded via `load_plugin_textdomain()` on the `init` hook.
 ## Known limitations
 
 - Only the five email types listed above.
-- Lookup by displayed number relies on the `_order_number` meta (common custom order-number plugins); other schemes may need a later extension.
+- Lookup uses the order-tracking ID filter, `_order_number` (and related) meta keys verified on the loaded order, then a bounded scan of `get_order_number()` / `_order_number`. Post IDs are not accepted as lookup keys. Sites with very large order volumes and filter-only numbering (no queryable meta) may need a later extension for faster resolution.
 - The tool is meant for **template testing**, not bulk resend or email delivery tracking.
 
 ---

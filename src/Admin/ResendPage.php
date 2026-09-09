@@ -196,7 +196,7 @@ final class ResendPage {
 						<td>
 							<input name="order_ref" id="resendemail_order" type="text" class="regular-text" required value="">
 							<p class="description">
-								<?php echo esc_html__( 'WordPress ID or displayed order number.', 'resendemail' ); ?>
+								<?php echo esc_html__( 'Sequential WooCommerce order number (e.g. _order_number meta), not the post ID.', 'resendemail' ); ?>
 							</p>
 						</td>
 					</tr>
