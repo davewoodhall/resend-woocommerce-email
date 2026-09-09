@@ -1,0 +1,111 @@
+﻿# Copyright (C) 2026 ADN Communication
+# This file is distributed under the same license as the Resend WooCommerce Email plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Resend WooCommerce Email 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: ADN Communication\n"
+"Language-Team: French\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-09T12:00:00+00:00\n"
+"PO-Revision-Date: 2026-09-09 12:00+0000\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Domain: resendemail\n"
+
+#: src/Plugin.php
+msgid "Resend WooCommerce Email requires WooCommerce to be installed and active."
+msgstr "Resend WooCommerce Email nécessite que WooCommerce soit installé et actif."
+
+#: src/Email/AllowedEmails.php
+msgid "New order (admin)"
+msgstr "Nouvelle commande (admin)"
+
+#: src/Email/AllowedEmails.php
+msgid "Processing order (customer)"
+msgstr "Commande en traitement (client)"
+
+#: src/Email/AllowedEmails.php
+msgid "On-hold order (customer)"
+msgstr "Commande en attente (client)"
+
+#: src/Email/AllowedEmails.php
+msgid "Completed order (customer)"
+msgstr "Commande terminée (client)"
+
+#: src/Email/AllowedEmails.php
+msgid "Order details / invoice (customer)"
+msgstr "Facture / détails de commande (client)"
+
+#: src/Email/OrderEmailSender.php
+msgid "WooCommerce is not active."
+msgstr "WooCommerce n’est pas actif."
+
+#: src/Email/OrderEmailSender.php
+#. translators: %s: WooCommerce email ID
+msgid "Email “%s” is not supported."
+msgstr "Courriel « %s » non supporté."
+
+#: src/Email/OrderEmailSender.php
+msgid "Invalid destination address."
+msgstr "Adresse de destination invalide."
+
+#: src/Email/OrderEmailSender.php
+#. translators: %s: order ID or order number
+msgid "Order “%s” could not be found."
+msgstr "Commande « %s » introuvable."
+
+#: src/Email/OrderEmailSender.php
+msgid "This email is not registered in WooCommerce."
+msgstr "Ce courriel n’est pas enregistré dans WooCommerce."
+
+#: src/Admin/ResendPage.php
+msgid "Resend email"
+msgstr "Renvoi de courriel"
+
+#: src/Admin/ResendPage.php
+msgid "Permission denied."
+msgstr "Permission refusée."
+
+#: src/Admin/ResendPage.php
+#: src/Cli/SendCommand.php
+msgid "Email sent."
+msgstr "Courriel envoyé."
+
+#: src/Admin/ResendPage.php
+msgid "Resend an order email"
+msgstr "Renvoi d'un courriel de commande"
+
+#: src/Admin/ResendPage.php
+msgid "Resends the selected email to a test address. The customer and usual administrators receive nothing, and the order state is not modified."
+msgstr "Renvoie le courriel choisi à une adresse de test. Le client et les administrateurs habituels ne reçoivent rien, et l'état de la commande n'est pas modifié."
+
+#: src/Admin/ResendPage.php
+msgid "Order number"
+msgstr "Numéro de commande"
+
+#: src/Admin/ResendPage.php
+msgid "WordPress ID or displayed order number."
+msgstr "ID WordPress ou numéro affiché de la commande."
+
+#: src/Admin/ResendPage.php
+msgid "Recipient"
+msgstr "Destinataire"
+
+#: src/Admin/ResendPage.php
+msgid "Email"
+msgstr "Courriel"
+
+#: src/Admin/ResendPage.php
+msgid "Options"
+msgstr "Options"
+
+#: src/Admin/ResendPage.php
+msgid "Prefix the subject with “[TEST]”"
+msgstr "Préfixer l'objet par « [TEST] »"
+
+#: src/Admin/ResendPage.php
+msgid "Send"
+msgstr "Envoyer"
